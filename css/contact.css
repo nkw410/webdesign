@@ -1,0 +1,128 @@
+@import url(common.css);
+
+/* 下余白:10px、行の高さ:1.5 */
+main article > p {
+  padding-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* 文字サイズ:14px、行の高さ:1.5、行頭文字:・、外側左余白:1.5em、下余白:20px */
+main aside ul {
+  font-size: 14px;
+  line-height: 1.5;
+  list-style-type: disc;
+  /* list-style-type：行頭マーク */
+  margin-left: 1.5em;
+  /* 外（margin）余白１．５文字分 黒丸なので*/
+  padding-bottom: 20px;
+}
+
+/* 幅:80%、中央配置 */
+main form {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* FlexBox、下余白:20px、縦方向の位置:ベースライン */
+main dl div {
+  display: flex;
+  padding-bottom: 20px;
+  align-items: baseline;
+}
+
+/* 太字、幅:12em */
+main dt {
+  font-weight: bold;
+  flex-basis: 12em;
+}
+
+/* 文字サイズ:11px、左余白:5px */
+main dt span {
+  font-size: 11px;
+  padding-left: 5px;
+}
+
+/* 幅比率:auto */
+main dd {
+  flex: auto;
+
+  /* dtを幅決めているから */
+}
+
+/* 幅:100%、内側余白:8px、アウトライン:なし */
+main input[type="text"],
+main input[type="email"],
+main textarea {
+  width: 100%;
+  padding: 8px;
+  outline: none;
+}
+
+/* 右余白:10px */
+main dd label {
+  padding-right: 10px;
+}
+
+/* 高さ:12em、行の高さ:1.5、リサイズ:垂直 */
+main textarea {
+  height: 12em;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+/* 縦方向の位置:上、内側上余白:15px */
+main dl div:last-child dt {
+  align-self: flex-start;
+  padding-top: 15px;
+}
+
+/* 上ボーダー:1px 直線 #666、内側上余白:20px、中央揃え */
+main form p {
+  border-top: 1px solid #666;
+  padding-top: 20px;
+  text-align: center;
+}
+
+/* 内側上下余白:10px、内側左右余白:30px、文字間隔:8px、ボーダー:1px 直線 #666、背景色:#fff、角丸:30px、マウスカーソル:リンク */
+main form button {
+  padding: 10px 22px 10px 30px;
+  letter-spacing: 8px;
+  border: 1px solid #666;
+  background-color: #fff;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+/* 不透明度:0.7 */
+main form button:hover {
+  opacity: 0.7;
+}
+
+/*--------------
+  レスポンシブ
+--------------*/
+/* スマホの書式 */
+@media (max-width: 767px) {
+  /* 幅:unset */
+  main form {
+    width: unset;
+  }
+}
+/* auto 100%でもok  */
+
+/* スマホ縦の書式 */
+@media (max-width: 767px) {
+  /* ブロック表示 */
+  main dl div {
+    display: block;
+  }
+
+  /* 内側上余白:15px、下ボーダー:1px 直線 #666、内側下余白:5px、外側下余白:10px */
+  main dt {
+    padding-top: 15px;
+    border-bottom: 1px solid #666;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+}

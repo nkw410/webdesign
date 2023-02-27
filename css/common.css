@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+
+/* 自動スクロール */
+:root {
+  scroll-behavior: smooth;
+}
+
+/*［bodyの書式］文字色:濃いグレー、文字サイズ:16px、書体:游ゴシック体、背景色:ベージュ */
+body {
+  /* テキストのデフォルトの書式 */
+  color: #333;
+  font-size: 16px;
+  font-family: "Yu Gothic Medium", YuGothic, sans-serif;
+  text-rendering: geometricPrecision;
+  /* ページ全体の背景色 */
+  background-color: beige;
+}
+/*［リンク文字の書式］文字色：親と同じ、下線なし → body書式の下へ移動、WebDesignにリンクを設定 */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+/* マテリアルアイコンズ */
+[class^="material-"] {
+  font-size: inherit;
+  vertical-align: -0.1em;
+}
+/* 親のサイズに合う　無条件でこの形式使う */
+
+/*［class="container"の書式］背景色:白、幅:980px、中央配置、内側左右余白:20px */
+.container {
+  background-color: #fff;
+  /* 幅を小さくして真ん中に移動（width,marigin) */
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/*［WebDesignの書式］
+背景色:青、文字色:白、中央揃え、余白:30px
+→文字サイズ:30px、太字
+→外側下余白:20px */
+header h1 {
+  background-color: blue;
+  color: white;
+  text-align: center;
+  padding: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Bangers", cursive;
+  margin-bottom: 20px;
+}
+
+/*［メニューの書式］上下ボーダー（線幅:2px、線種:直線、線カラー:任意）、内側上下余白:15px、外側下余白:20px、中央揃え */
+nav {
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-top-color: #ff9900;
+  border-bottom: 2px solid #ff9900;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+}
+/* sticky背景色必須 */
+
+/*［メニュー項目の書式］１行で表示、隣との間:20px */
+nav li {
+  display: inline;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/*［メニューのリンク文字のホバー設定］下線表示、不透明度:70% */
+/* ホバー＝マウスを上に乗せる */
+nav li a:hover {
+  text-decoration: underline;
+  /* opacity:は0.1～0.7 */
+  opacity: 0.7;
+  /* 画像は半透明にすることが多い */
+  /* 文字色変える、下線引く */
+}
+
+/*［HOMEの書式］太字 */
+nav li a.active {
+  font-weight: bold;
+}
+
+/*［mainの書式］下余白:30px */
+main {
+  padding-bottom: 30px;
+}
+
+/*［大見出しの書式］文字色:黒、文字サイズ:20px、太字、背景画像:h1_bg.jpg、行の高さ:80px、背景画像サイズ:カバー、背景画像位置:中央、内側左余白:30px、外側下余白:30px */
+main article h1 {
+  color: #000;
+  text-shadow: 2px 2px 2px #fff;
+  font-size: 20px;
+  font-weight: bold;
+  background-image: url(../img/h1_bg.jpg);
+  line-height: 80px;
+  background-size: cover;
+  background-position: center;
+  padding-left: 30px;
+  margin-bottom: 30px;
+}
+
+/*［footerの書式］背景色:黒、文字色:白、中央揃え、高さ:50px */
+footer {
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  /* height: 50px; ほとんど使わない */
+  padding-top: 17px;
+  padding-bottom: 17px;
+}
+
+/*［ページトップ］固定配置、右:12px、下:9px */
+footer p.pagetop {
+  position: fixed;
+  right: 12px;
+  bottom: 9px;
+}
+
+/* 不透明度:0.7 */
+footer p.pagetop a:hover {
+  opacity: 0.7;
+}
+
+/*［著作権］幅:980px、中央配置、右揃え */
+footer p.copyright {
+  width: 87%;
+  /* 両側に2.5％ずつ余白する */
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: right;
+}
+
+/* widthとmax-widthは後者優先 */
+
+/* font-weight 300(little)400(Regular)700(bold)
+fontstlye italic(ななめ) */
+
+/* 日本語の場合　２フォントのみ
+英語なら何書体でもOK　KB数少ないため
+右上の設定を押す
+
+フォントサイズ＝仮想ボディ（しかく）の幅の長さ */
+
+/* レスポンシブ */
+@media (max-width: 767px) {
+  header h1 {
+    margin-left: -20px;
+    margin-right: -20px;
+    /* 逆にすると幅が狭くなる（+は空く-は広がる） */
+  }
+  nav {
+    position: unset;
+  }
+  footer p.copyright {
+    text-align: center;
+  }
+}
+/* 変更したい部分だけ書く・同じ書式２つ書かない */
+/* unset 設定したタグをやめること */
+/* 初期設定を変更したい時はセレクタを丸ごとコピーしたら
+レスポンシブで記入する。下に書いてあるほうが獲得ポイントが高い */
+
+@media (max-width: 575px) {
+  nav li {
+    display: block;
+    /* 改行するためにblock */
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  footer p.copyright span {
+    display: none;
+  }
+}
+/* noneは非表示 */

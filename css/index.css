@@ -1,0 +1,35 @@
+@import url(common.css);
+
+p.visual {
+  padding-bottom: 20px;
+}
+
+/*［main sectionの書式］背景色:任意、内側余白:20px、外側下余白:20px */
+main section {
+  background-color: #95d1bd;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+/*［main section h2の書式］文字サイズ:20px、太字、下ボーダー（線幅:2px、線種:直線、線カラー:#333）、文字とボーダー間の余白:5px、外側下余白:10px */
+main section h2 {
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 2px solid #333;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+/*［main section pの書式］行の高さ:24px 文字サイス1.5倍 */
+main section p {
+  line-height: 1.5;
+}
+
+/* レスポンシブ */
+@media (max-width: 575px) {
+  p.visual img {
+    height: 300px;
+    object-fit: cover;
+    /* 縦横比固定一番小さくなる */
+    object-position: left;
+  }
+}

@@ -1,0 +1,416 @@
+@import url(common.css);
+
+/*［セクションの書式］下余白:30px */
+main article section {
+  padding-bottom: 30px;
+}
+
+/*［中見出しの書式］文字色:任意、文字サイズ:18px、背景画像:bg_h2_top.png(bg_h2_bottom.png)、繰り返しなし、背景画像位置:左下(左下)、内側上下余白: 20px、内側左余白:50px、外側下余白:20px */
+main article section h2 {
+  color: #f0ca9d;
+  font-size: 18px;
+  background-image: url(../img/bg_h2_top.png), url(../img/bg_h2_bottom.png);
+  background-repeat: no-repeat;
+  background-position: left top, left bottom;
+  padding-top: 20px;
+  padding-left: 50px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+/* 繰り返しなしはno-repeat */
+
+/*［"HOMEに戻る"ボタンの書式］背景色:任意、文字色:白、内側上下余白:15px、内側左右余白:25px、ブロック表示、幅:フィット、外側余白:0 auto、背景画像:arrow.png、繰り返しなし、背景画像サイズ:6px、背景画像位置:右から11px 中央 */
+main p.homelink a {
+  background-color: blue;
+  color: #fff;
+  padding: 15px 25px;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  background-image: url(../img/arrow.png);
+  background-repeat: no-repeat;
+  background-size: 6px;
+  background-position: right 11px center;
+}
+/* aタグを改行：display:block;(行に変えてしまう） */
+/* width(幅):fit-content(文字の周りをボックスにする)*/
+/* margin:0 auto(上下0　左右auto) */
+
+/*［"HOMEに戻る"ボタンのホバー設定］不透明度:0.7 */
+main p.homelink a:hover {
+  opacity: 0.7;
+}
+
+/*--------------------
+FlexBoxの設定
+--------------------*/
+/* FlexBox、横方向:均等配置 直下（＞）*/
+section.flex > div {
+  padding-bottom: 20px;
+  line-height: 1.5;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 幅:250px */
+/* 幅設定して余白設定する（flex-basis,justify-content） */
+section.flex p.left {
+  background-color: bisque;
+  padding: 10px;
+  flex-basis: 26.6%;
+}
+
+/* 幅:650px */
+section.flex .right {
+  background-color: aliceblue;
+  padding: 10px;
+  flex-basis: 69.1%;
+}
+
+/* フロート、文字との余白:15px leftかrightしか使わない*/
+/* フロートつけた下のタグが横に並ぶ */
+section.flex .right img {
+  float: right;
+  padding-left: 15px;
+  padding-bottom: 15px;
+}
+
+/* フロートの解除 基本both*/
+section.flex .right p:last-child {
+  clear: both;
+}
+
+/* FlexBox、折り返す、横方向:均等配置、行間隔:20px */
+section.list ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 20px;
+}
+
+/* 幅サイズ:460px */
+section.list li {
+  border: 1px solid #333;
+  padding: 10px;
+  line-height: 1.5;
+  flex-basis: 48.9%;
+}
+
+/*--------------------
+罫線メニュー
+--------------------*/
+/* FlexBox */
+section.menu ul {
+  display: flex;
+}
+
+/* 幅比率:1 */
+section.menu li {
+  flex: 1;
+}
+
+/* 文字色:任意、太字、ボーダーコの字（線幅:2px、直線、カラー:文字色と同じ）、ブロック表示、中央揃え、行の高さ:36px */
+/* クリックできる幅はaタグが決めている */
+section.menu li a {
+  color: brown;
+  font-weight: bold;
+  border-top: 2px solid brown;
+  border-right: 2px solid brown;
+  border-bottom: 2px solid brown;
+  display: block;
+  text-align: center;
+  line-height: 36px;
+}
+/* 行の高さ(lineheight)の中にボーダーは入らない
+2pxぼーだーについてるから上下で４pxなので中は３６px */
+
+section.menu li:first-child a {
+  border-left: 2px solid brown;
+}
+
+/* 文字色:白、背景色:線カラーと同じ */
+section.menu li a:hover {
+  color: #fff;
+  background-color: brown;
+}
+/* マウスを上に乗せたときに反転する */
+/* menuバーは７つが最大 */
+
+/*--------------------
+絶対配置 absolute
+--------------------*/
+/* 他のタグと重ねる、指定しないといけないときの使用する */
+/* 何かに含まれていないといけない */
+
+/* 絶対配置の基準（相対配置） */
+section.flex {
+  position: relative;
+}
+
+/* 絶対配置、上:5px、右:0 */
+section.flex p.homelink {
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+
+/* レスポンシブ */
+@media (max-width: 767px) {
+  section.flex p.homelink {
+    position: unset;
+  }
+}
+
+@media (max-width: 575px) {
+  section.flex > div {
+    display: block;
+  }
+  section.flex p.left {
+    margin-bottom: 20px;
+  }
+
+  section.list ul {
+    display: block;
+  }
+  section.list li {
+    margin-bottom: 20px;
+  }
+  section.menu ul {
+    display: block;
+  }
+  section.menu li a {
+    border-top: unset;
+    border-left: 2px solid brown;
+  }
+  section.menu li:first-child a {
+    border-top: 2px solid brown;
+  }
+}
+/* PC作った後にタグの下に変更用を作る */
+
+/* アコーディオン */
+summary {
+  cursor: pointer;
+  margin-bottom: 10px;
+  /* カーソルがきかない部分にしたいのでmargin-bottom*/
+}
+
+/* テーブル */
+table {
+  width: 50%;
+  border: 1px solid #000;
+  border-collapse: separate;
+  /* セルとセルの間離すタグ↑ */
+  border-spacing: 5px;
+  /* セルとセルの間のスペースタグ */
+  text-align: center;
+}
+
+td {
+  border: 1px solid #000;
+  /* セルにwidth設定したらテーブルも広がる */
+  height: 40px;
+  /* 中の文字をどこに設定するか */
+  vertical-align: middle;
+  width: 200px;
+  /* 全てセル同じ大きさになる（th）も */
+  /* テーブルが優先される比率になってしまう */
+  /* widthはどちらかにしか付けない（tdのほうが多い） */
+}
+
+caption {
+  caption-side: bottom;
+}
+
+/*--------------------
+transition
+--------------------*/
+section.transition p {
+  margin-bottom: 20px;
+  text-align: center;
+}
+/* シンプルなtransition */
+p.simple a:hover {
+  opacity: 0.5;
+  transition: 1s;
+}
+/* aタグの時からhoverにするときは0 */
+
+p.simple a {
+  transition: 1s;
+}
+
+/* transitionのオプション */
+p.option {
+  line-height: 60px;
+  background-color: var(--my-color);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  transition-property: width;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+  /* 優しくゆるやか（最初も最後ゆっくり途中はやめ） */
+  transition-delay: 0.5s;
+  /* (待ってから変化する) */
+}
+
+p.option:hover {
+  background-color: var(--hover-color);
+  transition: 1s;
+  width: 50%;
+  /* サイズは開始と最後が必要 */
+  border-radius: 50%;
+  /* hoverした時に楕円形になる */
+}
+
+/*--------------------
+タブ切り替え
+--------------------*/
+section.tab ul {
+  color: #fff;
+  display: flex;
+  text-align: center;
+  gap: 10px;
+  position: relative;
+  /* 親の基準に↑タグをつける */
+  padding-bottom: 100px;
+  /* 余白を作らないと下のタグ部分が（h2）重なって見えなくなってしまう */
+}
+
+section.tab li {
+  flex: 1;
+}
+
+section.tab label {
+  display: block;
+  line-height: 60px;
+  cursor: pointer;
+}
+/* インラインを行にする */
+/* 文字を上下真ん中に持ってくる */
+
+section.tab label[for="tab1"] {
+  background-color: #000;
+}
+
+section.tab label[for="tab2"] {
+  background-color: #5235f7;
+}
+
+section.tab label[for="tab3"] {
+  background-color: #f7e708;
+}
+
+/* ３つを重ねる */
+section.tab div {
+  line-height: 100px;
+  position: absolute;
+  left: 0;
+  /* 左から0の位置（tabを基準に持ってきたいどこが基準か設定しないと全画面の左からになってしまう） */
+  width: 100%;
+  visibility: hidden;
+  /* ↑非表示にする（divタグが見えなくなる） */
+  opacity: 0;
+  height: 0;
+  transition: 0.5s;
+  /* opacityを0から1を0.5秒かけて表示する */
+}
+
+/* iuput=idの次のdivタグ */
+section.tab input#tab1 + div {
+  background-color: #000;
+}
+
+section.tab input#tab2 + div {
+  background-color: #5235f7;
+}
+
+section.tab input#tab3 + div {
+  background-color: #f7e708;
+}
+
+/* チェックボックスでタブ切り替え */
+/* チェックされた次のdivタグを表示する */
+section.tab input[name="tab"]:checked + div {
+  visibility: visible;
+  opacity: 1;
+  height: 100px;
+  /* 0の状態から100の状態にすると上から出てくる感じになる */
+}
+
+/* ラジオボタンを非表示にする */
+section.tab input[name="tab"] {
+  display: none;
+}
+
+/*--------------------
+@keyframe
+--------------------*/
+section.keyframe p {
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 60px;
+  background-color: var(--my-color);
+}
+/* 表示時のフェードイン */
+/* 最初にパターンを作成しておく */
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+  /* 0が最初100が最後 */
+}
+
+p.fadein {
+  animation: fadein 2s;
+}
+/* animationとkyeframesはセット */
+
+/* 点滅表示 */
+p.blink {
+  animation-name: fadein;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  /* ↑点滅（上のフェードインと秒数を無限に繰り返す0～100） */
+  animation-direction: alternate-reverse;
+  /* 繰り返し方（0～100、100～0になる・alternateだと100から始まる） */
+  animation-timing-function: ease-in-out;
+  /* 最初と最後がゆっくり */
+  animation-delay: 0.5s;
+  /* ↑遅らせて点滅始めさせる */
+}
+
+/* ホバーで点滅 */
+p.hoverb:hover {
+  background-color: var(--hover-color);
+  animation-name: fadein;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-timing-function: ease-in-out;
+}
+/* クリックで停止 */
+p.hoverb label {
+  display: block;
+}
+/* inputidチェックされた次のホバー */
+input#stop:checked + p.hoverb {
+  animation-play-state: paused;
+}
+
+input#stop {
+  display: none;
+}
+
+/*--------------------
+CSS変数
+--------------------*/
+:root {
+  --my-color: aquamarine;
+  /* 頭は必ず--をつける 名前は自由*/
+  --hover-color: crimson;
+}

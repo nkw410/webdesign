@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>お問い合わせ - WebDesign</title>
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/favicon.png">
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+<body id="top">
+  <div class="container">
+    <header>
+      <!-- サイト名はh1（大見出し）で囲む -->
+      <h1><a href="index.html">WebDesign</a></h1>
+    </header>
+
+    <!-- ul始まりul終わりでメニューリスト作成
+        中のメニュー一個一個li始まり終わりで囲む -->
+    <nav>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="next.html">下層ページの構成</a></li>
+        <li><a href="contact.html" class="active">お問い合わせ</a></li>
+      </ul>
+    </nav>
+
+    <!-- あとでファイルを入力すときは＃を入力しておく -->
+
+
+    <main>
+      <article>
+        <h1>お問い合わせ</h1>
+        <p>WebDesignについてのご質問・ご意見は、下記フォームよりお気軽にお問い合わせください。</p>
+        <aside>
+          <ul>
+            <li>必要事項を記入し、「送信」をクリックしてください。</li>
+            <li>ご登録いただいた個人情報は、お問い合わせ内容の確認以外には使用いたしません。</li>
+            <li>※は必須項目です。</li>
+          </ul>
+        </aside>
+        <form action="#" method="post">
+          <!-- フォームは説明タイトルタグで囲む -->
+          <!-- お知らせのリストにもよく使う・更新情報など -->
+          <dl>
+
+            <div>
+              <dt>お名前<span>※</span></dt>
+              <dd><input type="text" placeholder="ウェブデザ　花子" required></dd>
+            </div>
+            <!-- placeholder=薄く文字入力例として出る -->
+            <!-- required=必須属性（入力しないと）エラーでる -->
+
+
+            <div>
+              <dt>メールアドレス<span>※</span></dt>
+              <dd><input type="email" placeholder="info@gmail.com" required></dd>
+            </div>
+            <!-- emailは専用のtype=email使用する メールアドレス文字CKしてくれる -->
+
+
+            <div>
+              <dt>お問い合わせの種類</dt>
+              <dd>
+                <label>
+                  <input type="radio" name="category" checked>
+                  ご質問
+                </label>
+                <label>
+                  <input type="radio" name="category">
+                  お問い合わせ
+                </label>
+                <!-- labelタグで囲むことによって文字をクリックしても
+              チェックがつくようになる -->
+              </dd>
+            </div>
+
+
+            <div>
+              <dt>内容</dt>
+              <dd><textarea></textarea></dd>
+            </div>
+            <!-- textarea改行しない！ -->
+
+          </dl>
+
+          <p><button>送信</button></p>
+          <!-- buttonタグの中にimg入れると画像送信ボタンになる -->
+        </form>
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <p class="pagetop"><a href="#top"><img src="img/gotop.svg" width="32" height="32" alt="ページトップへ"></a></p>
+    <p class="copyright">
+      <small>
+        &copy;2021 WebDesign.
+        <span>All Rights Reserved.</span>
+      </small>
+    </p>
+  </footer>
+
+</body>
+
+</html>
