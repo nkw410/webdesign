@@ -6,10 +6,11 @@
   <title>下層ページの構成とは - WebDesign</title>
   <link rel="icon" href="img/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="img/favicon.png">
-
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
   <link rel="stylesheet" href="css/next.css">
+  <script src="js/footerFixed.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 
 
@@ -22,6 +23,7 @@
 
     <!-- ul始まりul終わりでメニューリスト作成
         中のメニュー一個一個li始まり終わりで囲む -->
+    <button class="hmenu"><span></span></button>
     <nav>
       <ul>
         <li><a href="index.html">HOME</a></li>
@@ -186,7 +188,7 @@
     </main>
   </div>
 
-  <footer>
+  <footer id="footer">
     <p class="pagetop"><a href="#top"><img src="img/gotop.svg" width="32" height="32" alt="ページトップへ"></a></p>
 
     <p class="copyright">
@@ -196,7 +198,7 @@
       </small>
     </p>
   </footer>
-
+  <script src="js/script.js"></script>
 </body>
 
 </html>

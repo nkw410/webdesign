@@ -27,7 +27,7 @@ a {
   font-size: inherit;
   vertical-align: -0.1em;
 }
-/* 親のサイズに合う　無条件でこの形式使う */
+/* 親のサイズに合う・無条件でこの形式使う */
 
 /*［class="container"の書式］背景色:白、幅:980px、中央配置、内側左右余白:20px */
 .container {
@@ -53,6 +53,71 @@ header h1 {
   font-weight: bold;
   font-family: "Bangers", cursive;
   margin-bottom: 20px;
+}
+
+/*-------------------------------
+ハンバーガーアイコン（モバイル用）
+-------------------------------*/
+/* 幅:50px, 高さ:50px, ボーダー:なし, 背景色:任意, FlexBox(中に入ってるタグ), 横:中央, 縦:中央, 配置:absolute, 上:15px, 右:15px  */
+.hmenu {
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: #7195da;
+  display: none;
+  /* 横:中央↓ */
+  justify-content: center;
+  /* 縦:中央↓ */
+  align-items: center;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+/* flexboxで縦方向真ん中にできる（オプション） */
+
+/* 幅:35px, 高さ:4px, 背景色:#fff, 角丸:4px, ブロック表示, 配置:absolute, 切り替え:0.5s */
+/* span::before,after（spanタブの中にcssで子どものタグを作っている2つだけ作れる）内容が絶対必要 */
+.hmenu span,
+.hmenu span::before,
+.hmenu span::after {
+  width: 35px;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 4px;
+  display: block;
+  position: absolute;
+  transition: 0.5s;
+}
+/* 基準になるところに配置 */
+
+/* 内容(content):"テキスト入力", spnaタグの下から:12px */
+.hmenu span::before {
+  content: "";
+  bottom: 12px;
+}
+
+/* 内容:"", 上:12px */
+.hmenu span::after {
+  content: "";
+  top: 12px;
+}
+/* ハンバーガーメニューの間隔・設定・全体の大きさ・色は自分で変える */
+
+/* 背景色:unset */
+.hmenu.close span {
+  background-color: unset;
+}
+
+/* 下(元の位置に戻す):0, transform(変形) 回転(rotate):-45°(deg) */
+.hmenu.close span::before {
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+/* 上:0, 回転:45° */
+.hmenu.close span::after {
+  top: 0;
+  transform: rotate(45deg);
 }
 
 /*［メニューの書式］上下ボーダー（線幅:2px、線種:直線、線カラー:任意）、内側上下余白:15px、外側下余白:20px、中央揃え */
@@ -128,6 +193,7 @@ footer p.pagetop {
   position: fixed;
   right: 12px;
   bottom: 9px;
+  display: none;
 }
 
 /* 不透明度:0.7 */
@@ -150,8 +216,8 @@ footer p.copyright {
 /* font-weight 300(little)400(Regular)700(bold)
 fontstlye italic(ななめ) */
 
-/* 日本語の場合　２フォントのみ
-英語なら何書体でもOK　KB数少ないため
+/* 日本語の場合２フォントのみ
+英語なら何書体でもOK→KB数少ないため
 右上の設定を押す
 
 フォントサイズ＝仮想ボディ（しかく）の幅の長さ */
@@ -176,6 +242,14 @@ fontstlye italic(ななめ) */
 レスポンシブで記入する。下に書いてあるほうが獲得ポイントが高い */
 
 @media (max-width: 575px) {
+  .hmenu {
+    display: flex;
+  }
+  /* モバイルメニューA */
+  /* nav {
+    display: none;
+  } */
+
   nav li {
     display: block;
     /* 改行するためにblock */
@@ -185,5 +259,42 @@ fontstlye italic(ななめ) */
   footer p.copyright span {
     display: none;
   }
+
+  /* モバイルメニューB */
+  /* 幅:0, 高さ:100%-header高さpx, ボーダー:なし, ドロップシャドウ:(左側)-3px 0 (ぼかし)6px （ｼｬﾄﾞｳの色）rgba(0, 0, 0, 0.2), 配置:absolute, 上:header高さpx, 右:0, 切り替え:0.5s, オーバーフローX:隠す, 折り返さない calc()は計算式 記号の前後にスペースが必要*/
+  nav {
+    width: 0px;
+    height: calc(100% - 90px);
+    border: none;
+    box-shadow: -3px 0 6px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 90px;
+    right: 0;
+    transition: 0.5s;
+    /* width 0の時文字が中に入っていたら隠すためのCSS(overflow-x横方向) 隠す（hidden）*/
+    overflow-x: hidden;
+    /* 幅が狭くなっても折り返しがなくなる 文字設定 */
+    white-space: nowrap;
+  }
+
+  /* 幅:200px */
+  /* closeがついた時の次のタグ */
+  .hmenu.close + nav {
+    width: 200px;
+  }
+
+  /* 左余白:20px, 左揃え */
+  nav li {
+    padding-left: 20px;
+    text-align: left;
+  }
 }
 /* noneは非表示 */
+
+@media (min-width: 575px) {
+  nav {
+    display: block !important;
+  }
+}
+
+/* cssよりプログラムが優先される !importantをつけると最も優先される（強制）*/

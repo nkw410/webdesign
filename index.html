@@ -6,9 +6,10 @@
     <title>WebDesign</title>
     <link rel="icon" href="img/favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="img/favicon.png">
-
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/index.css">
+    <script src="js/footerFixed.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 
 
@@ -21,6 +22,7 @@
 
         <!-- ul始まりul終わりでメニューリスト作成
         中のメニュー一個一個li始まり終わりで囲む -->
+        <button class="hmenu"><span></span></button>
         <nav>
             <ul>
                 <li><a href="index.html" class="active">HOME</a></li>
@@ -52,18 +54,19 @@
                 <p>バナーや注意書きなどの補足情報はasideで囲む。</p>
             </aside>
         </main>
-
-
-        <footer>
-            <p class="pagetop"><a href="#top"><img src="img/gotop.svg" width="32" height="32" alt="ページトップへ"></a></p>
-            <p class="copyright">
-                <small>
-                    &copy;2021 WebDesign.
-                    <span>All Rights Reserved.</span>
-                </small>
-            </p>
-        </footer>
     </div>
+
+
+    <footer id="footer">
+        <p class="pagetop"><a href="#top"><img src="img/gotop.svg" width="32" height="32" alt="ページトップへ"></a></p>
+        <p class="copyright">
+            <small>
+                &copy;2021 WebDesign.
+                <span>All Rights Reserved.</span>
+            </small>
+        </p>
+    </footer>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
